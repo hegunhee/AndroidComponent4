@@ -18,6 +18,7 @@ class MyService : Service(),CoroutineScope {
         launch(coroutineContext) {
             for (i in 0 until 100) {
                 Log.d("MyService", "Service $i")
+                delay(100)
             }
             stopSelf()
         }
