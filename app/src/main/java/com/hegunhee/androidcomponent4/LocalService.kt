@@ -4,22 +4,26 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
+import android.util.Log
 import java.util.*
 
 class LocalService : Service() {
-    private val binder = LocalBinder()
+    override fun onCreate() {
+        super.onCreate()
+        Log.d("bindService Test","bind test")
 
-    private val mGenerator = Random()
-
-    val randomNumber: Int
-        get() = mGenerator.nextInt(100)
-
-
-    inner class LocalBinder : Binder(){
-        fun getService() : LocalService = this@LocalService
+    }
+    class MyBinder : Binder(){
+        fun funA(a : Int){
+            Log.d("bindService Test" ,"$a")
+        }
+        fun funB(a: Int) : Int{
+            Log.d("bindService Test","${a*a}")
+            return a*a
+        }
     }
 
-    override fun onBind(p0: Intent?): IBinder {
-        return binder
+    override fun onBind(p0: Intent?): IBinder? {
+        return MyBinder()
     }
 }

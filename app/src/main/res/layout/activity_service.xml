@@ -10,17 +10,31 @@
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:text="시작"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/start"
         android:text="종료"
-        />
+        app:layout_constraintStart_toEndOf="@id/start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/funA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="funA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start" />
+
+    <Button
+        android:id="@+id/funB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="funB"
+        app:layout_constraintStart_toEndOf="@id/funA"
+        app:layout_constraintTop_toTopOf="@id/funA" />
 </androidx.constraintlayout.widget.ConstraintLayout>
