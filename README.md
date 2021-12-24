@@ -8,4 +8,7 @@
 [3. 액티비티의 생명주기](https://hegunhee.tistory.com/17)  
 액티비티를 사용하려면 생명주기를 알아야합니다.  
 ![activity lifecycle](https://user-images.githubusercontent.com/57277631/146757508-fa983ae1-a3f8-4d5e-bc1f-f64e3b0efa1b.png)  
-[4. Broadcast Receiver](https://hegunhee.tistory.com/15)
+[4. Broadcast Receiver](https://hegunhee.tistory.com/15)  
+[5. Service](https://hegunhee.tistory.com/19)  
+서비스는 백그라운드 작업을 목적으로 하는 컴포넌트입니다.  
+![Service lifecycle](https://user-images.githubusercontent.com/57277631/147347152-2e161ccd-aa29-4f1e-93c9-bd7d0d70cda2.PNG)  
