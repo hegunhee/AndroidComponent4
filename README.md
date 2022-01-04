@@ -12,3 +12,5 @@
 [5. Service](https://hegunhee.tistory.com/19)  
 서비스는 백그라운드 작업을 목적으로 하는 컴포넌트입니다.  
 ![Service lifecycle](https://user-images.githubusercontent.com/57277631/147347152-2e161ccd-aa29-4f1e-93c9-bd7d0d70cda2.PNG)  
+[6. bindingService](https://hegunhee.tistory.com/21)  
+바인딩 서비스는 액티비티와 상호 데이터를 주고받거나 통신에 이용하는 서비스입니다.  
