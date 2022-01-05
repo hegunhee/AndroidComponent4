@@ -14,3 +14,5 @@
 ![Service lifecycle](https://user-images.githubusercontent.com/57277631/147347152-2e161ccd-aa29-4f1e-93c9-bd7d0d70cda2.PNG)  
 [6. bindingService](https://hegunhee.tistory.com/21)  
 바인딩 서비스는 액티비티와 상호 데이터를 주고받거나 통신에 이용하는 서비스입니다.  
+[7. contentProvider](https://hegunhee.tistory.com/22)  
+콘텐츠프로바이더는 앱간에 데이터를 주고받거나 연동하는 과정에서 사용됩니다.  
