@@ -1,5 +1,6 @@
 package com.hegunhee.androidcomponent4
 
+import android.app.Activity
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -21,9 +22,10 @@ class ServiceActivity : AppCompatActivity() {
     var serviceBinder : LocalService.MyBinder? = null
     val connection : ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
-            serviceBinder = (p1 as LocalService.MyBinder)
-            serviceBinder?.funA(3)!!
-            serviceBinder?.funB(3)!!
+            (p1 as LocalService.MyBinder)?.run {
+                funA(3)
+                funB(3)
+            }
             Log.d("bindService test","ServiceBinder 받음")
         }
 
@@ -49,12 +51,20 @@ class ServiceActivity : AppCompatActivity() {
     }
 
     private fun startService(){
-        val intent = Intent(this,LocalService::class.java)
-        bindService(intent,connection,Context.BIND_AUTO_CREATE)
+        Intent(this,LocalService::class.java)?.run {
+            bindService(this,connection,Context.BIND_AUTO_CREATE)
+        }
     }
 
     private fun endService(){
         unbindService(connection)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 10 && resultCode == Activity.RESULT_OK){
+            val result = data?.getStringExtra("resultData")
+        }
     }
 
 }

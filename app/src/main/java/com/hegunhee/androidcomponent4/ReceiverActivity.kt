@@ -28,11 +28,12 @@ class ReceiverActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val filter = IntentFilter()
-        filter.addAction(Intent.ACTION_POWER_CONNECTED)
+        IntentFilter().apply {
+            addAction(Intent.ACTION_POWER_CONNECTED)
+            addAction(MyReceiver.MyAction)
+            registerReceiver(mReceiver,this)
+        }
 
-        filter.addAction(MyReceiver.MyAction)
-        registerReceiver(mReceiver,filter)
     }
 
     override fun onPause() {
