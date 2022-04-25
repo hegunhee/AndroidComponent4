@@ -22,11 +22,12 @@ class ServiceActivity : AppCompatActivity() {
     var serviceBinder : LocalService.MyBinder? = null
     val connection : ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
-            (p1 as LocalService.MyBinder)?.run {
+            (p1 as LocalService.MyBinder).run {
                 funA(3)
                 funB(3)
+                Log.d("bindService test","ServiceBinder 받음")
             }
-            Log.d("bindService test","ServiceBinder 받음")
+
         }
 
         override fun onServiceDisconnected(p0: ComponentName?) {
@@ -51,7 +52,7 @@ class ServiceActivity : AppCompatActivity() {
     }
 
     private fun startService(){
-        Intent(this,LocalService::class.java)?.run {
+        Intent(this,LocalService::class.java).run {
             bindService(this,connection,Context.BIND_AUTO_CREATE)
         }
     }

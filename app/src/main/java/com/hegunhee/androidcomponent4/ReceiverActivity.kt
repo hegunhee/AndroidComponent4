@@ -9,13 +9,14 @@ import com.hegunhee.androidcomponent4.databinding.ActivityReceiverBinding
 
 class ReceiverActivity : AppCompatActivity() {
     private lateinit var binding : ActivityReceiverBinding
-    private lateinit var mReceiver : BroadcastReceiver
+    private lateinit var receiver : BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityReceiverBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityReceiverBinding.inflate(layoutInflater).also {
+            setContentView(it.root)
+        }
         initViews()
-        mReceiver = MyReceiver()
+        receiver = MyReceiver()
 
     }
     private fun initViews() {
@@ -31,14 +32,14 @@ class ReceiverActivity : AppCompatActivity() {
         IntentFilter().apply {
             addAction(Intent.ACTION_POWER_CONNECTED)
             addAction(MyReceiver.MyAction)
-            registerReceiver(mReceiver,this)
+            registerReceiver(receiver,this)
         }
 
     }
 
     override fun onPause() {
         super.onPause()
-        unregisterReceiver(mReceiver)
+        unregisterReceiver(receiver)
     }
 
 
