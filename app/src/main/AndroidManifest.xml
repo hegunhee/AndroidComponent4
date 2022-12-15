@@ -9,24 +9,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidComponent4">
-        <activity android:name=".ReceiverActivity"></activity>
+        <receiver
+            android:name=".MyReceiver3"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="3">
+                <action android:name="android.intent.action.CAMERA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MyReceiver2"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="2">
+                <action android:name="android.intent.action.CAMERA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ReceiverActivity">
+        </activity>
 
         <receiver
-            android:name=".MyReceiver"
+            android:name=".MyReceiver1"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter android:priority="1">
+                <action android:name="android.intent.action.CAMERA_BUTTON"/>
+            </intent-filter>
+        </receiver>
 
         <service android:name=".LocalService" />
         <service android:name=".MyService" />
 
-        <activity android:name=".ServiceActivity">
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -9,37 +9,50 @@ import com.hegunhee.androidcomponent4.databinding.ActivityReceiverBinding
 
 class ReceiverActivity : AppCompatActivity() {
     private lateinit var binding : ActivityReceiverBinding
-    private lateinit var receiver : BroadcastReceiver
+    private lateinit var receiver1 : BroadcastReceiver
+    private lateinit var receiver2 : BroadcastReceiver
+    private lateinit var receiver3 : BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReceiverBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
         initViews()
-        receiver = MyReceiver()
+        receiver1 = MyReceiver1()
+        receiver2 = MyReceiver2()
+        receiver3 = MyReceiver3()
 
     }
     private fun initViews() {
         binding.register.setOnClickListener {
-            Intent(MyReceiver.MyAction).also{
-                sendBroadcast(it)
+            Intent(MyAction).also{
+                sendOrderedBroadcast(it,"")
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
+        IntentFilter(Intent.ACTION_POWER_CONNECTED)
         IntentFilter().apply {
             addAction(Intent.ACTION_POWER_CONNECTED)
-            addAction(MyReceiver.MyAction)
-            registerReceiver(receiver,this)
+            addAction(MyAction)
+            registerReceiver(receiver1,this)
+            registerReceiver(receiver2,this)
+            registerReceiver(receiver3,this)
         }
 
     }
 
     override fun onPause() {
         super.onPause()
-        unregisterReceiver(receiver)
+        unregisterReceiver(receiver1)
+        unregisterReceiver(receiver2)
+        unregisterReceiver(receiver3)
+    }
+
+    companion object {
+        const val MyAction = "com.hegunhee.androidcomponent4.ACTION_MY_BROADCAST"
     }
 
 
